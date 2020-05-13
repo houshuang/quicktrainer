@@ -1,0 +1,10 @@
+{
+  "name": "hypothesis-to-bullet",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@byem.io/sm2": "^0.1.2"
+  }
+}
