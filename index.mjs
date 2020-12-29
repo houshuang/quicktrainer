@@ -28,7 +28,7 @@ const ask = question =>
 const tell = answer =>
   new Promise(resolve =>
     exec(
-      `osascript -e 'tell application (path to frontmost application as text) to display dialog "Answer: ${answer}" buttons {"OK"} with icon stop'`,
+      `osascript -e 'display notification "answer: ${answer}"'`,
       (error, stdout, stderr) => {
         resolve();
       }
@@ -54,9 +54,7 @@ const main = async () => {
         f[0] = Date.now() + (res.interval || 1) * 60 * 1000;
         const dateStr = `${new Date().getHours()}:${new Date().getMinutes()}`;
         console.log(`${dateStr}: Rescheduling for ${res.interval}`);
-        if (!didKnow) {
-          await tell(f[2]);
-        }
+        await tell(f[2]);
       });
     });
   if (fs.existsSync(path)) {
